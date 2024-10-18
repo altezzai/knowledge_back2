@@ -39,10 +39,10 @@ const Department = knowledgeSequelize.define(
   }
 );
 Department.associate = (models) => {
-  // Department.belongsToMany(models.College, {
-  //   through: "CollegeDepartment",
-  //   foreignKey: "departmentId",
-  //   otherKey: "collegeId",
-  // });
+  Department.belongsToMany(models.College, {
+    through: "CollegeDepartment",
+    foreignKey: "departmentId",
+    otherKey: "collegeId",
+  });
 };
 module.exports = Department;

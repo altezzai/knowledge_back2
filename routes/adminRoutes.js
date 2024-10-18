@@ -55,93 +55,89 @@ const efstorage = multer.diskStorage({
 });
 const efupload = multer({ storage: efstorage });
 //Manage college
-// router.post(
-//   "/createCollege/",
-//   upload.single("logo"),
-//   adminController.createCollege
-// );
-// router.get("/getColleges/", adminController.getColleges);
-// router.get("/getCollege/:id", adminController.getCollegeId);
-// router.put(
-//   "/updateCollege/:id",
-//   upload.single("logo"),
-//   adminController.updateCollegeById
-// );
-// router.delete("/deleteCollege/:id", adminController.deleteCollegeById);
+router.post("/College/", upload.single("logo"), adminController.createCollege);
+router.get("/College/", adminController.getColleges);
+router.get("/College/:id", adminController.getCollegeId);
+router.put(
+  "/College/:id",
+  upload.single("logo"),
+  adminController.updateCollegeById
+);
+router.delete("/College/:id", adminController.deleteCollegeById);
 
 // Manage Department
 router.post(
-  "/createDepartment/",
+  "/Department/",
   depUpload.single("icon"),
   adminController.createDepartment
 );
-router.get("/getDepartments/", adminController.getDepartments);
-router.get("/getDepartment/:id", adminController.getDepartmentId);
+router.get("/Department/", adminController.getDepartments);
+router.get("/Department/:id", adminController.getDepartmentId);
 router.put(
-  "/updateDepartment/:id",
+  "/Department/:id",
   depUpload.single("icon"),
   adminController.updateDepartmentById
 );
-router.delete("/deleteDepartment/:id", adminController.deleteDepartmentById);
+router.delete("/Department/:id", adminController.deleteDepartmentById);
 //search
 // router.post("/search/", adminController.search);
 
 //Manage university
 router.post(
-  "/createUniversity/",
+  "/University/",
   uniupload.single("logo"),
   adminController.createUniversity
 );
-// router.get("/getUniversities/", adminController.getUniversities);
-// router.get("/getUniversity/:id", adminController.getUniversityId);
-// router.put(
-//   "/updateUniversity/:id",
-//   uniupload.single("logo"),
-//   adminController.updateUniversityById
-// );
-// router.delete("/deleteUniversity/:id", adminController.deleteUniversityById);
+router.get("/University/", adminController.getUniversities);
+router.get("/University/:id", adminController.getUniversityId);
+router.put(
+  "/University/:id",
+  uniupload.single("logo"),
+  adminController.updateUniversityById
+);
+router.delete("/University/:id", adminController.deleteUniversityById);
 
-// //manage Staff
-// router.post(
-//   "/createStaff/",
-//   stfupload.single("profile_picture"),
-//   adminController.createStaff
-// );
+//manage Staff
+router.post(
+  "/Staff/",
+  stfupload.single("profile_picture"),
+  adminController.createStaff
+);
 
-// router.get("/getStaffs/", adminController.getStaffs);
-// router.get("/getStaffId/:id", adminController.getStaffId);
-// router.put(
-//   "/updateStaff/:id",
-//   stfupload.single("profile_picture"),
-//   adminController.updateStaff
-// );
-// router.delete("/deleteStaff/:id", adminController.deleteStaff);
+router.get("/Staff/", adminController.getStaffs);
+router.get("/Staff/:id", adminController.getStaffId);
+router.put(
+  "/Staff/:id",
+  stfupload.single("profile_picture"),
+  adminController.updateStaff
+);
+router.delete("/Staff/:id", adminController.deleteStaff);
 
-// //manage EditorPostFeed
-// router.post(
-//   "/editorPostfeed/",
-//   efupload.single("file"),
-//   adminController.createEfeed
-// );
+//manage EditorPostFeed
+router.post(
+  "/editorPostfeed/",
+  efupload.single("file"),
+  adminController.createEfeed
+);
 
-// router.get("/editorPostfeed/", adminController.getEfeed);
-// router.get("/editorPostfeed/:id", adminController.getEfeedbyid);
-// router.put(
-//   "/editorPostfeed/:id",
-//   efupload.single("file"),
-//   adminController.updateEfeed
-// );
-// router.delete("/editorPostfeed/:id", adminController.deleteEfeed);
+router.get("/editorPostfeed/", adminController.getEfeed);
+router.get("/editorPostfeed/:id", adminController.getEfeedbyid);
+router.put(
+  "/editorPostfeed/:id",
+  efupload.single("file"),
+  adminController.updateEfeed
+);
+router.delete("/editorPostfeed/:id", adminController.deleteEfeed);
 
-// //manage Feedback from Editorial bord
-// router.post("/feedback/", adminController.createfeedback);
-// // // Get all feedback
-// router.get("/feedback/", adminController.getfeedbacks);
-// // Get feedback by ID
-// router.get("/feedback/:id", adminController.getfeedbackid);
-// // Update feedback
-// router.put("/feedback/:id", adminController.updatefeedback);
-// // Delete feedback
-// router.delete("/feedback/:id", adminController.deletefeedback);
+//manage Feedback from Editorial bord
+router.post("/feedback/", adminController.createfeedback);
+// // Get all feedback
+router.get("/feedback/", adminController.getfeedbacks);
+// Get feedback by ID
+router.get("/feedback/:id", adminController.getfeedbackid);
+// Update feedback
+router.put("/feedback/:id", adminController.updatefeedback);
+// Delete feedback
+router.delete("/feedback/:id", adminController.deletefeedback);
 
 module.exports = router;
