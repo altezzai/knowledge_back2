@@ -35,5 +35,19 @@ const upload = multer({
 // Routes
 router.post("/content/", upload, submissionController.createSubmission);
 router.get("/content/", submissionController.getSubmissions);
+router.get("/content/:id", submissionController.getSubmissionById);
+router.put("/content/:id", upload, submissionController.updateSubmissionById);
+router.delete("/content/:id", submissionController.deleteSubmissionById);
+
+//submission accept or reject functions
+router.patch("/:id/approve/", submissionController.submissionsApprove);
+router.patch("/:id/reject/", submissionController.submissionsReject);
+
+//manage librarian add feedback
+router.post("/libfeedback/", submissionController.createlibfeedback);
+router.get("/libfeedback/", submissionController.getlibfeedbacks);
+router.get("/libfeedback/:id", submissionController.getlibfeedbackid);
+router.put("/libfeedback/:id", submissionController.updatelibfeedback);
+router.delete("/libfeedback/:id", submissionController.deletelibfeedback);
 
 module.exports = router;
