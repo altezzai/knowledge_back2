@@ -214,7 +214,96 @@ const deletelibfeedback = async (req, res) => {
     res.status(400).json({ error: error.message });
   }
 };
+const createDepartment = async (req, res) => {
+  try {
+    const { department_name } = req.body;
+    const existingDepartment = await Department.findOne({
+      where: { department_name },
+    });
+    if (existingDepartment) {
+      return res.status(400).json({ error: "Department name already exists" });
+    }
+    const departmentdata = {
+      ...req.body,
+      icon: req.file ? req.file.filename : null,
+    };
+    console.log(departmentdata);
+    const department = await Department.create(departmentdata);
+    res.status(201).json(department);
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+};
 
+// Get all departments
+const getDepartments = async (req, res) => {
+  try {
+    const departments = await Department.findAll();
+    res.status(200).json(departments);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};
+
+// Get a single department by ID
+// router.get("/:id", async (req, res) => {
+const getDepartmentId = async (req, res) => {
+  try {
+    const department = await Department.findByPk();
+    if (department) {
+      res.status(200).json(department);
+    } else {
+      res.status(404).json({ error: "Department not found" });
+    }
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};
+
+// Update a department by ID
+// router.put("/:id", async (req, res) => {
+const updateDepartmentById = async (req, res) => {
+  try {
+    const { department_name } = req.body;
+    const existingDepartment = await Department.findOne({
+      where: { department_name },
+    });
+    if (existingDepartment) {
+      return res.status(400).json({ error: "Department name already exists" });
+    }
+
+    const department = await Department.findByPk(req.params.id);
+    if (req.file && department.icon) {
+      fs.unlinkSync(path.join("uploads/department_icons/", department.icon));
+    }
+    const updatedDepartmentData = {
+      ...req.body,
+      icon: req.file ? req.file.filename : department.icon,
+    };
+
+    await department.update(updatedDepartmentData);
+    res.json(department);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};
+
+// Delete a department by ID
+// router.delete("/:id", async (req, res) => {
+const deleteDepartmentById = async (req, res) => {
+  try {
+    const deleted = await Department.destroy({
+      where: { department_id: req.params.id },
+    });
+    if (deleted) {
+      res.status(200).send({ message: "Department Successfully Deleted" });
+    } else {
+      res.status(404).json({ error: "Department not found" });
+    }
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};
 module.exports = {
   createSubmission,
   getSubmissions,
@@ -229,4 +318,10 @@ module.exports = {
   getlibfeedbackid,
   updatelibfeedback,
   deletelibfeedback,
+
+  createDepartment,
+  getDepartments,
+  getDepartmentId,
+  updateDepartmentById,
+  deleteDepartmentById,
 };

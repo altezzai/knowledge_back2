@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const multer = require("multer");
 const submissionController = require("../controllers/SubmissionController");
+const adminController = require("../controllers/adminController");
 
 const fileStorage = multer.diskStorage({
   destination: (req, file, cb) => {
@@ -50,4 +51,30 @@ router.get("/libfeedback/:id", submissionController.getlibfeedbackid);
 router.put("/libfeedback/:id", submissionController.updatelibfeedback);
 router.delete("/libfeedback/:id", submissionController.deletelibfeedback);
 
+// const depstorage = multer.diskStorage({
+//   destination: function (req, file, cb) {
+//     cb(null, "uploads/department_icons/");
+//   },
+//   filename: function (req, file, cb) {
+//     cb(null, Date.now() + "-" + file.originalname);
+//   },
+// });
+
+// const depUpload = multer({ storage: depstorage });
+// router.post(
+//   "/createDepartment/",
+//   depUpload.single("icon"),
+//   submissionController.createDepartment
+// );
+// router.get("/getDepartments/", submissionController.getDepartments);
+// router.get("/getDepartment/:id", submissionController.getDepartmentId);
+// router.put(
+//   "/updateDepartment/:id",
+//   depUpload.single("icon"),
+//   submissionController.updateDepartmentById
+// );
+// router.delete(
+//   "/deleteDepartment/:id",
+//   submissionController.deleteDepartmentById
+// );
 module.exports = router;

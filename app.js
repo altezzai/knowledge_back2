@@ -14,7 +14,7 @@ app.use(bodyParser.urlencoded());
 app.use(bodyParser.json());
 
 const submissionRoutes = require("./routes/SubmissionRoutes");
-// const adminRoutes = require("./routes/adminRoutes");
+const adminRoutes = require("./routes/adminRoutes");
 // const publicRoutes = require("./routes/publicRoutes");
 // const { sequelize } = require("./models");
 
@@ -29,7 +29,7 @@ app.use(express.urlencoded({ extend: true }));
 app.use("/uploads", express.static("uploads"));
 
 app.use("/api/v1/submissions", submissionRoutes);
-// app.use("/api/v1/admin", adminRoutes);
+app.use("/api/v1/admin", adminRoutes);
 // app.use("/api/v1/public", publicRoutes);
 
 const PORT = process.env.PORT || 3000;
