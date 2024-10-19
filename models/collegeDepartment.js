@@ -1,7 +1,7 @@
 const { DataTypes } = require("sequelize");
 const { knowledgeSequelize } = require("../config/connection");
 
-const CollegeDepartment = knowledgeSequelize.define("CollegeDepartment", {
+const CollegeDepartments = knowledgeSequelize.define("CollegeDepartments", {
   id: {
     type: DataTypes.INTEGER,
     primaryKey: true,
@@ -40,4 +40,4 @@ const CollegeDepartment = knowledgeSequelize.define("CollegeDepartment", {
   },
 });
 
-module.exports = CollegeDepartment;
+module.exports = CollegeDepartments;

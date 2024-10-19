@@ -2,7 +2,7 @@
 
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable("CollegeDepartment", {
+    await queryInterface.createTable("CollegeDepartments", {
       id: {
         type: Sequelize.INTEGER,
         primaryKey: true,
@@ -37,7 +37,7 @@ module.exports = {
       },
     });
 
-    await queryInterface.addConstraint("CollegeDepartment", {
+    await queryInterface.addConstraint("CollegeDepartments", {
       fields: ["collegeId", "departmentId"],
       name: "unique_collegeDepartments",
       type: "unique",
@@ -49,6 +49,6 @@ module.exports = {
       "collegeDepartments",
       "unique_collegeDepartments"
     );
-    await queryInterface.dropTable("CollegeDepartment");
+    await queryInterface.dropTable("CollegeDepartments");
   },
 };
