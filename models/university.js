@@ -82,7 +82,7 @@ const University = knowledgeSequelize.define(
   },
   {
     modelName: "University",
-    tableName: "University",
+    tableName: "Universities",
     timestamps: true,
   }
 );

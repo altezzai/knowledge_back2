@@ -34,7 +34,7 @@ const Department = knowledgeSequelize.define(
     },
   },
   {
-    tableName: "department",
+    tableName: "departments",
     timestamps: true, // If your table has timestamps columns, set this to true and remove last_updated from the model
   }
 );

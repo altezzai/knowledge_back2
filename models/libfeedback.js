@@ -37,7 +37,7 @@ const Libfeedback = knowledgeSequelize.define(
   },
   {
     modelName: "Libfeedback",
-    tableName: "Libfeedback",
+    tableName: "Libfeedbacks",
     timestamps: false, // If you're not using Sequelize's automatic timestamps
   }
 );

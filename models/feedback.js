@@ -37,7 +37,7 @@ const Feedback = knowledgeSequelize.define(
   },
   {
     modelName: "Feedback",
-    tableName: "Feedback",
+    tableName: "Feedbacks",
     timestamps: false,
   }
 );

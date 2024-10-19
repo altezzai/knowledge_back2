@@ -65,7 +65,7 @@ const EditorPostfeed = knowledgeSequelize.define(
   },
   {
     modelName: "EditorPostFeed",
-    tableName: "editorPostfeed",
+    tableName: "EditorPostfeeds",
     timestamps: true,
   }
 );

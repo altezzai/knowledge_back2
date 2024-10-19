@@ -59,7 +59,7 @@ const Staff = knowledgeSequelize.define(
   },
   {
     modelName: "Staff",
-    tableName: "Staff",
+    tableName: "Staffs",
     timestamps: true, // Automatically manages createdAt and updatedAt
   }
 );
