@@ -14,7 +14,7 @@ const UniversityDepartment = require("../models/universityDepartment");
 // const { Op } = require("sequelize");
 // const feedback = require("../models/feedback");
 
-exports.createCollege = async (req, res) => {
+const createCollege = async (req, res) => {
   try {
     const collegeData = {
       ...req.body,
@@ -36,7 +36,7 @@ exports.createCollege = async (req, res) => {
   }
 };
 
-exports.getColleges = async (req, res) => {
+const getColleges = async (req, res) => {
   try {
     const colleges = await College.findAll();
     res.json(colleges);
@@ -47,7 +47,7 @@ exports.getColleges = async (req, res) => {
 
 // Get a single college by ID
 // router.get("/:id", async (req, res) => {
-exports.getCollegeId = async (req, res) => {
+const getCollegeId = async (req, res) => {
   try {
     const college = await College.findByPk(req.params.id);
     if (college) {
@@ -62,7 +62,7 @@ exports.getCollegeId = async (req, res) => {
 
 // Update a college with logo upload
 // router.put("/:id", upload.single("logo"), async (req, res) => {
-exports.updateCollegeById = async (req, res) => {
+const updateCollegeById = async (req, res) => {
   try {
     const college = await College.findByPk(req.params.id);
     if (!college) {
@@ -115,7 +115,7 @@ exports.updateCollegeById = async (req, res) => {
 
 // Delete a college
 // router.delete("/:id", async (req, res) => {
-exports.deleteCollegeById = async (req, res) => {
+const deleteCollegeById = async (req, res) => {
   try {
     const college = await College.findByPk(req.params.id);
     if (!college) {
@@ -136,7 +136,7 @@ exports.deleteCollegeById = async (req, res) => {
 
 // Create a new department
 // router.post("/", async (req, res) => {
-exports.createDepartment = async (req, res) => {
+const createDepartment = async (req, res) => {
   try {
     const { department_name } = req.body;
     const existingDepartment = await Department.findOne({
@@ -158,7 +158,7 @@ exports.createDepartment = async (req, res) => {
 };
 
 // Get all departments
-exports.getDepartments = async (req, res) => {
+const getDepartments = async (req, res) => {
   try {
     const departments = await Department.findAll();
     res.status(200).json(departments);
@@ -169,7 +169,7 @@ exports.getDepartments = async (req, res) => {
 
 // Get a single department by ID
 // router.get("/:id", async (req, res) => {
-exports.getDepartmentId = async (req, res) => {
+const getDepartmentId = async (req, res) => {
   try {
     const department = await Department.findByPk(req.params.id);
     if (department) {
@@ -184,7 +184,7 @@ exports.getDepartmentId = async (req, res) => {
 
 // Update a department by ID
 // router.put("/:id", async (req, res) => {
-exports.updateDepartmentById = async (req, res) => {
+const updateDepartmentById = async (req, res) => {
   try {
     const { department_name } = req.body;
     const existingDepartment = await Department.findOne({
@@ -212,7 +212,7 @@ exports.updateDepartmentById = async (req, res) => {
 
 // Delete a department by ID
 // router.delete("/:id", async (req, res) => {
-exports.deleteDepartmentById = async (req, res) => {
+const deleteDepartmentById = async (req, res) => {
   try {
     const deleted = await Department.destroy({
       where: { department_id: req.params.id },
@@ -229,7 +229,7 @@ exports.deleteDepartmentById = async (req, res) => {
 
 // // Create a new university
 
-exports.createUniversity = async (req, res) => {
+const createUniversity = async (req, res) => {
   try {
     const universityData = {
       ...req.body,
@@ -253,7 +253,7 @@ exports.createUniversity = async (req, res) => {
   }
 };
 // Get all universities
-exports.getUniversities = async (req, res) => {
+const getUniversities = async (req, res) => {
   try {
     const universities = await University.findAll();
     res.json(universities);
@@ -263,7 +263,7 @@ exports.getUniversities = async (req, res) => {
 };
 
 // Get a single university by ID
-exports.getUniversityId = async (req, res) => {
+const getUniversityId = async (req, res) => {
   try {
     const university = await University.findByPk(req.params.id);
     if (university) {
@@ -277,7 +277,7 @@ exports.getUniversityId = async (req, res) => {
 };
 
 // Update a university
-exports.updateUniversityById = async (req, res) => {
+const updateUniversityById = async (req, res) => {
   try {
     const university = await University.findByPk(req.params.id);
     if (!university) {
@@ -330,7 +330,7 @@ exports.updateUniversityById = async (req, res) => {
 
 // Delete a university
 //   router.delete("/:id", async (req, res) => {
-exports.deleteUniversityById = async (req, res) => {
+const deleteUniversityById = async (req, res) => {
   try {
     const university = await University.findByPk(req.params.id);
     if (!university) {
@@ -346,7 +346,7 @@ exports.deleteUniversityById = async (req, res) => {
   }
 };
 // // Create a new staff member
-exports.createStaff = async (req, res) => {
+const createStaff = async (req, res) => {
   try {
     const { email } = req.body;
     const existingemail = await Staff.findOne({
@@ -367,7 +367,7 @@ exports.createStaff = async (req, res) => {
 };
 
 // Get all staff members
-exports.getStaffs = async (req, res) => {
+const getStaffs = async (req, res) => {
   try {
     const staff = await Staff.findAll();
     res.json(staff);
@@ -377,7 +377,7 @@ exports.getStaffs = async (req, res) => {
 };
 
 // Get a single staff member by ID
-exports.getStaffId = async (req, res) => {
+const getStaffId = async (req, res) => {
   try {
     const staff = await Staff.findByPk(req.params.id);
     if (staff) {
@@ -391,7 +391,7 @@ exports.getStaffId = async (req, res) => {
 };
 
 // Update a staff member
-exports.updateStaff = async (req, res) => {
+const updateStaff = async (req, res) => {
   try {
     const staff = await Staff.findByPk(req.params.id);
     if (!staff) {
@@ -422,7 +422,7 @@ exports.updateStaff = async (req, res) => {
 };
 
 // Delete a staff member
-exports.deleteStaff = async (req, res) => {
+const deleteStaff = async (req, res) => {
   try {
     const staff = await Staff.findByPk(req.params.id);
     if (!staff) {
@@ -440,7 +440,7 @@ exports.deleteStaff = async (req, res) => {
   }
 };
 // Create a new post in editorPostfeed
-exports.createEfeed = async (req, res) => {
+const createEfeed = async (req, res) => {
   try {
     const { submission_id } = req.body;
     const existingsubmission_id = await EditorPostfeed.findOne({
@@ -458,7 +458,7 @@ exports.createEfeed = async (req, res) => {
 };
 
 // Get all posts
-exports.getEfeed = async (req, res) => {
+const getEfeed = async (req, res) => {
   try {
     const posts = await EditorPostfeed.findAll();
     res.json(posts);
@@ -468,7 +468,7 @@ exports.getEfeed = async (req, res) => {
 };
 
 // Get a single post by ID
-exports.getEfeedbyid = async (req, res) => {
+const getEfeedbyid = async (req, res) => {
   try {
     const post = await EditorPostfeed.findByPk(req.params.id);
     if (post) {
@@ -482,7 +482,7 @@ exports.getEfeedbyid = async (req, res) => {
 };
 
 // Update a post
-exports.updateEfeed = async (req, res) => {
+const updateEfeed = async (req, res) => {
   try {
     const post = await EditorPostfeed.findByPk(req.params.id);
     if (!post) {
@@ -506,7 +506,7 @@ exports.updateEfeed = async (req, res) => {
 };
 
 // Delete a post
-exports.deleteEfeed = async (req, res) => {
+const deleteEfeed = async (req, res) => {
   try {
     const post = await EditorPostfeed.findByPk(req.params.id);
     if (!post) {
@@ -525,7 +525,7 @@ exports.deleteEfeed = async (req, res) => {
   }
 };
 // Create a new feedback entry
-exports.createfeedback = async (req, res) => {
+const createfeedback = async (req, res) => {
   console.log(req.body);
   try {
     const feedback = await Feedback.create(req.body);
@@ -536,7 +536,7 @@ exports.createfeedback = async (req, res) => {
 };
 
 // Get all feedback entries
-exports.getfeedbacks = async (req, res) => {
+const getfeedbacks = async (req, res) => {
   try {
     const feedbacks = await Feedback.findAll();
     res.json(feedbacks);
@@ -546,7 +546,7 @@ exports.getfeedbacks = async (req, res) => {
 };
 
 // Get a single feedback entry by ID
-exports.getfeedbackid = async (req, res) => {
+const getfeedbackid = async (req, res) => {
   try {
     const feedback = await Feedback.findByPk(req.params.id);
     if (feedback) {
@@ -560,7 +560,7 @@ exports.getfeedbackid = async (req, res) => {
 };
 
 // Update a feedback entry
-exports.updatefeedback = async (req, res) => {
+const updatefeedback = async (req, res) => {
   try {
     const feedback = await Feedback.findByPk(req.params.id);
     if (!feedback) {
@@ -575,7 +575,7 @@ exports.updatefeedback = async (req, res) => {
 };
 
 // Delete a feedback entry (soft delete)
-exports.deletefeedback = async (req, res) => {
+const deletefeedback = async (req, res) => {
   try {
     const feedback = await Feedback.findByPk(req.params.id);
     if (!feedback) {
@@ -588,4 +588,41 @@ exports.deletefeedback = async (req, res) => {
   } catch (error) {
     res.status(400).json({ error: error.message });
   }
+};
+module.exports = {
+  createCollege,
+  getColleges,
+  getCollegeId,
+  updateCollegeById,
+  deleteCollegeById,
+
+  createDepartment,
+  getDepartments,
+  getDepartmentId,
+  updateDepartmentById,
+  deleteDepartmentById,
+
+  createUniversity,
+  getUniversities,
+  getUniversityId,
+  updateUniversityById,
+  deleteUniversityById,
+
+  createStaff,
+  getStaffs,
+  getStaffId,
+  updateStaff,
+  deleteStaff,
+
+  createEfeed,
+  getEfeed,
+  getEfeedbyid,
+  updateEfeed,
+  deleteEfeed,
+
+  createfeedback,
+  getfeedbacks,
+  getfeedbackid,
+  updatefeedback,
+  deletefeedback,
 };

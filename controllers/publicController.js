@@ -8,7 +8,7 @@ const UniversityDepartment = require("../models/universityDepartment");
 const Submission = require("../models/submissions");
 const College = require("../models/college");
 
-exports.contentsearch = async (req, res) => {
+const contentsearch = async (req, res) => {
   try {
     const searchQuery = req.body.title;
     console.log(searchQuery);
@@ -53,7 +53,7 @@ exports.contentsearch = async (req, res) => {
     res.status(400).json({ error: error.message });
   }
 };
-exports.getcontentUniversityIdDepartementId = async (req, res) => {
+const getcontentUniversityIdDepartementId = async (req, res) => {
   try {
     const { univId } = req.params;
     const { deptId } = req.params;
@@ -74,7 +74,7 @@ exports.getcontentUniversityIdDepartementId = async (req, res) => {
   }
 };
 
-exports.getcontentUniversityIdCollegeIdDepartementId = async (req, res) => {
+const getcontentUniversityIdCollegeIdDepartementId = async (req, res) => {
   try {
     const { univId } = req.params;
     const { deptId } = req.params;
@@ -96,7 +96,7 @@ exports.getcontentUniversityIdCollegeIdDepartementId = async (req, res) => {
     res.status(400).json({ error: error.message });
   }
 };
-exports.getCollegesByUniversityId = async (req, res) => {
+const getCollegesByUniversityId = async (req, res) => {
   try {
     const { univId } = req.params;
 
@@ -115,7 +115,7 @@ exports.getCollegesByUniversityId = async (req, res) => {
     res.status(400).json({ error: error.message });
   }
 };
-exports.getDepartmentsByCollegeId = async (req, res) => {
+const getDepartmentsByCollegeId = async (req, res) => {
   try {
     const { collegeId } = req.params;
 
@@ -156,7 +156,7 @@ exports.getDepartmentsByCollegeId = async (req, res) => {
     res.status(500).json({ error: error.message });
   }
 };
-exports.searchDepartmentsByCollegeId = async (req, res) => {
+const searchDepartmentsByCollegeId = async (req, res) => {
   try {
     const { collegeId } = req.params;
 
@@ -204,7 +204,7 @@ exports.searchDepartmentsByCollegeId = async (req, res) => {
     res.status(500).json({ error: error.message });
   }
 };
-exports.searchDepartment = async (req, res) => {
+const searchDepartment = async (req, res) => {
   try {
     const searchQuery = req.body.q;
     console.log(searchQuery);
@@ -226,7 +226,7 @@ exports.searchDepartment = async (req, res) => {
     res.status(500).json({ error: error.message });
   }
 };
-exports.getDepartmentsByUniversityId = async (req, res) => {
+const getDepartmentsByUniversityId = async (req, res) => {
   try {
     const { univId } = req.params;
 
@@ -267,7 +267,7 @@ exports.getDepartmentsByUniversityId = async (req, res) => {
     res.status(500).json({ error: error.message });
   }
 };
-exports.searchDepartmentsByUniversityId = async (req, res) => {
+const searchDepartmentsByUniversityId = async (req, res) => {
   try {
     const { univId } = req.params;
 
@@ -314,4 +314,15 @@ exports.searchDepartmentsByUniversityId = async (req, res) => {
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
+};
+module.exports = {
+  contentsearch,
+  getcontentUniversityIdDepartementId,
+  getcontentUniversityIdCollegeIdDepartementId,
+  getCollegesByUniversityId,
+  getDepartmentsByCollegeId,
+  searchDepartmentsByCollegeId,
+  searchDepartment,
+  getDepartmentsByUniversityId,
+  searchDepartmentsByUniversityId,
 };
