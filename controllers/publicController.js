@@ -1,6 +1,6 @@
 // const { CollegeDepartment, Department } = require("../models"); // Make sure the correct path and models are used
-// const path = require("path");
-// const fs = require("fs");
+const path = require("path");
+const fs = require("fs");
 const { Op } = require("sequelize");
 const Department = require("../models/department");
 const CollegeDepartment = require("../models/collegeDepartment");
